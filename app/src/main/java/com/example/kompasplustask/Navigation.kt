@@ -2,7 +2,6 @@ package com.example.kompasplustask
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavHost
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 
@@ -17,7 +16,12 @@ fun NavHost(
         modifier = modifier
     ) {
         composable(route = Screen.MainScreen.route) {
-            MainScreen()
+            MainScreen(
+                modifier = Modifier,
+                onNavigateToDetail = {
+                    navController.navigate(Screen.DetailAnswerScreen.route)
+                }
+            )
         }
 
         composable(route = Screen.DetailAnswerScreen.route) {
