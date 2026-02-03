@@ -1,4 +1,4 @@
-package com.example.kompasplustask
+package com.example.kompasplustask.presentation.detail_screen
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable

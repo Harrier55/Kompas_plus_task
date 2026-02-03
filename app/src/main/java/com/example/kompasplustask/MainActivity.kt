@@ -8,18 +8,18 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.compose.rememberNavController
+import com.example.kompasplustask.navigation.NavHost
 import com.example.kompasplustask.ui.theme.KompasPlusTaskTheme
 
 class MainActivity : ComponentActivity() {
@@ -34,19 +34,24 @@ class MainActivity : ComponentActivity() {
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
                     topBar = { 
-                        TopAppBar(
-                            title = { Text("Kompas Plus") },
+                        CenterAlignedTopAppBar(
+                            title = {
+                                Text(
+                                    text = stringResource(R.string.faq),
+                                    color = MaterialTheme.colorScheme.error
+                                )
+                            },
                             navigationIcon = {
                                 IconButton(onClick = { navController.navigateUp() }) {
                                     Icon(
                                         imageVector = Icons.Filled.ArrowBack,
+                                        tint = MaterialTheme.colorScheme.error,
                                         contentDescription = "Назад"
                                     )
                                 }
                             },
                             colors = TopAppBarDefaults.topAppBarColors(
-                                containerColor = MaterialTheme.colorScheme.primaryContainer,
-                                titleContentColor = MaterialTheme.colorScheme.primary,
+                                containerColor = MaterialTheme.colorScheme.onPrimary,
                             )
                         )
                     }

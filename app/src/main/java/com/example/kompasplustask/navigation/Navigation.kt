@@ -1,9 +1,11 @@
-package com.example.kompasplustask
+package com.example.kompasplustask.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
+import com.example.kompasplustask.presentation.detail_screen.DetailAnswerScreen
+import com.example.kompasplustask.presentation.main_screen.MainScreen
 
 @Composable
 fun NavHost(
