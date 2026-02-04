@@ -46,7 +46,7 @@ object FaqRepository {
                 title = subject,
                 items = items
             )
-        }.sortedBy { it.title } // Сортируем категории по алфавиту
+        }
     }
 
     fun searchFaqItems(

@@ -28,7 +28,7 @@ import com.example.kompasplustask.ui.theme.KompasPlusTaskTheme
 @Composable
 fun MainScreen(
     modifier: Modifier = Modifier,
-    onNavigateToDetail: () -> Unit = {},
+    onNavigateToDetail: (String) -> Unit = {},
     viewModel: MainViewModel = viewModel()
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
@@ -49,7 +49,9 @@ fun MainScreen(
                 viewModel.clearSearch()
                 focusManager.clearFocus()
             },
-            modifier = Modifier.fillMaxWidth().padding(top = 10.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 10.dp)
         )
 
         // Контент в зависимости от состояния
@@ -73,7 +75,7 @@ fun MainScreen(
                     state = state,
                     onToggleSection = { title -> viewModel.toggleSection(title) },
                     onQuestionClick = { faqCode ->
-            //todo            onNavigateToDetail(faqCode)
+                        onNavigateToDetail(faqCode)
                     },
                     modifier = Modifier.fillMaxSize()
                 )

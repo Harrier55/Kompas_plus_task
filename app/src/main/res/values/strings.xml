@@ -2,4 +2,10 @@
     <string name="app_name">Kompas plus task</string>
     <string name="faq">F.A.Q.</string>
     <string name="search">Search</string>
+    <string name="question_not_found">Вопрос не найден</string>
+    <string name="question_delete">Возможно, вопрос был удален или изменился</string>
+    <string name="repeat_search">Повторить поиск</string>
+    <string name="is_error">Произошла ошибка</string>
+    <string name="question_loading">Загрузка вопроса...</string>
+    <string name="state_unnow">Неизвестное состояние</string>
 </resources>
