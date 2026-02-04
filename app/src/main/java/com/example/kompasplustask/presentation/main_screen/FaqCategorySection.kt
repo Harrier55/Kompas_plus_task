@@ -74,7 +74,7 @@ fun FaqCategorySection(
 
             Icon(
              //   imageVector = if (isExpanded) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
-                painterResource(R.drawable.icons_double_arrow_50),
+                painterResource(R.drawable.icons_double_up_32),
                 contentDescription = if (isExpanded) "Свернуть" else "Развернуть",
                 tint = MaterialTheme.colorScheme.primary,
                 modifier = Modifier
