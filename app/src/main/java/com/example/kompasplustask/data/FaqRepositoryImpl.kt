@@ -1,6 +1,8 @@
 package com.example.kompasplustask.data
 
+import android.content.Context
 import android.util.Log
+import com.example.kompasplustask.R
 import com.example.kompasplustask.data.FaqRepositoryObject.TAG
 import com.example.kompasplustask.domain.models.FaqItem
 import com.example.kompasplustask.domain.repository.FaqRepository
@@ -11,6 +13,7 @@ import kotlinx.serialization.json.Json
 
 
 class FaqRepositoryImpl(
+    private val context: Context,
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ): FaqRepository {
     private val jsonString: String = DataSource.FAQ_JSON_STRING
@@ -36,12 +39,13 @@ class FaqRepositoryImpl(
 
 
     private fun String.replaceAppName(): String {
-        return this.replace("%SUBST_APPLICATION_NAME%", "Платежи Мобикеш")//TODO вынести в ресурсы
+        val appName = context.getString(R.string.company_name)
+        return this.replace("%SUBST_APPLICATION_NAME%", appName)
     }
 
     // Для nullable строк
     private fun String?.replaceAppNameOrNull(): String? {
-        return this?.replace("%SUBST_APPLICATION_NAME%", "Платежи Мобикеш")
+        return this?.replaceAppName()
     }
 
 }
