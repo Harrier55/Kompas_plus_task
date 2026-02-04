@@ -15,10 +15,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.kompasplustask.R
 import com.example.kompasplustask.domain.models.FaqCategory
 import com.example.kompasplustask.presentation.common_components.AppSearchBar1
 import com.example.kompasplustask.presentation.common_components.LoadingState
@@ -158,7 +159,7 @@ private fun EmptyState(
         verticalArrangement = Arrangement.Center
     ) {
         Text(
-            text = "Нет данных для отображения",
+            text = stringResource(R.string.no_data),
             style = MaterialTheme.typography.titleMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
@@ -174,11 +175,4 @@ fun MainScreenPreview() {
         MainScreen()
     }
 }
-//
-//Button(
-//onClick = onNavigateToDetail,
-//modifier = Modifier.fillMaxWidth()
-//) {
-//    Text("Go to Detail Screen")
-//}
 

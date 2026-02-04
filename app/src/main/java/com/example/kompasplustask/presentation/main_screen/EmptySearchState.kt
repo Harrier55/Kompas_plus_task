@@ -14,9 +14,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.example.kompasplustask.R
 
 @Composable
 fun EmptySearchState(
@@ -29,14 +31,14 @@ fun EmptySearchState(
         verticalArrangement = Arrangement.Center
     ) {
         Icon(
-            imageVector = Icons.Default.Search, //todo
+            imageVector = Icons.Default.Search,
             contentDescription = "Ничего не найдено",
             modifier = Modifier.size(64.dp),
             tint = Color.Gray
         )
 
         Text(
-            text = "По запросу \"$searchQuery\" ничего не найдено",
+            text = stringResource(R.string.not_found, searchQuery),
             style = MaterialTheme.typography.titleMedium,
             fontWeight = FontWeight.Medium,
             color = Color.Gray,
@@ -47,7 +49,7 @@ fun EmptySearchState(
         )
 
         Text(
-            text = "Попробуйте изменить поисковый запрос",
+            text = stringResource(R.string.question_change),
             style = MaterialTheme.typography.bodyMedium,
             color = Color.Gray,
             textAlign = TextAlign.Center,

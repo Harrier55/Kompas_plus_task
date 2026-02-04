@@ -9,4 +9,11 @@
     <string name="question_loading">Загрузка вопроса...</string>
     <string name="state_unnow">Неизвестное состояние</string>
     <string name="company_name">Платежи Мобикеш</string>
+    <string name="question_change">Попробуйте изменить поисковый запрос</string>
+    <string name="not_found">По запросу \"%1$s\" ничего не найдено</string>
+    <string name="repeat">Повторить попытку</string>
+    <string name="load_error">Ошибка загрузки</string>
+    <string name="no_data">Нет данных</string>
+    <string name="faq_title">Часто задаваемые вопросы</string>
+    <string name="select_category">Выберите категорию или воспользуйтесь поиском</string>
 </resources>

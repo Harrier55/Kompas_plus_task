@@ -15,9 +15,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.example.kompasplustask.R
 
 @Composable
 fun ErrorState(
@@ -38,7 +40,7 @@ fun ErrorState(
         )
 
         Text(
-            text = "Ошибка загрузки",
+            text = stringResource(R.string.load_error),
             style = MaterialTheme.typography.titleMedium,
             fontWeight = FontWeight.Bold,
             color = Color.Red,
@@ -59,7 +61,7 @@ fun ErrorState(
             onClick = onRetry,
             modifier = Modifier.padding(top = 16.dp)
         ) {
-            Text("Повторить попытку")
+            Text(stringResource(R.string.repeat))
         }
     }
 }
