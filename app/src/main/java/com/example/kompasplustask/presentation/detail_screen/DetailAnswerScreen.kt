@@ -35,10 +35,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.kompasplustask.R
 import com.example.kompasplustask.domain.models.FaqItem
 import com.example.kompasplustask.ui.theme.KompasPlusTaskTheme
+import org.koin.androidx.compose.koinViewModel
 
 private const val TAG = "App"
 
@@ -46,7 +46,7 @@ private const val TAG = "App"
 fun DetailAnswerScreen(
     modifier: Modifier = Modifier,
     faqCode: String,
-    viewModel: DetailViewModel = viewModel(),
+    viewModel: DetailViewModel = koinViewModel(),
     onNavigateBack: () -> Boolean
 ){
     val state by viewModel.state.collectAsState()

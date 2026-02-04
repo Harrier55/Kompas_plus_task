@@ -14,5 +14,5 @@ val dataModule = module {
 }
 val viewModelModule = module {
     viewModel { MainViewModel(get()) }
-    //    viewModel { DetailViewModel(get()) }
+    viewModel { DetailViewModel(get()) }
 }

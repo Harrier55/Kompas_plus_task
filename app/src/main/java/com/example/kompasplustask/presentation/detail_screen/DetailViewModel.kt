@@ -2,8 +2,8 @@ package com.example.kompasplustask.presentation.detail_screen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.kompasplustask.data.FaqRepositoryObject
 import com.example.kompasplustask.domain.models.FaqItem
+import com.example.kompasplustask.domain.repository.FaqRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -18,7 +18,9 @@ data class DetailScreenState(
     val isNotFound: Boolean = false
 )
 
-class DetailViewModel: ViewModel() {
+class DetailViewModel(
+    private val repository: FaqRepository
+): ViewModel() {
 
     private val _state = MutableStateFlow(DetailScreenState())
     val state: StateFlow<DetailScreenState> = _state
@@ -49,9 +51,8 @@ class DetailViewModel: ViewModel() {
 
         viewModelScope.launch {
             try {
-                // Загрузка в фоновом потоке
                 val foundItem = withContext(dispatcher) {
-                    FaqRepositoryObject.getFaqData().find { it.code == faqCode }
+                    repository.getFaqData().find { it.code == faqCode }
                 }
 
                 _state.update {
