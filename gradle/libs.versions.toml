@@ -7,6 +7,17 @@ activityCompose = "1.8.0"
 composeBom = "2024.04.01"
 kotlinxSerialization = "1.6.3"
 
+# Navigation
+navigationCompose = "2.7.7"
+
+# Json
+kotlinxSerializationJson = "1.5.0"
+
+# Koin
+koinAndroid = "3.5.0"
+koinAndroidxCompose = "3.5.0"
+
+# Test
 junit = "4.13.2"
 junitVersion = "1.3.0"
 espressoCore = "3.7.0"
@@ -24,8 +35,16 @@ androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 
+# Navigation
+androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
+
 # Serialization
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
+kotlinx-serialization-json-v150 = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+
+# Koin
+koin-android = { module = "io.insert-koin:koin-android", version.ref = "koinAndroid" }
+koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koinAndroidxCompose" }
 
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
