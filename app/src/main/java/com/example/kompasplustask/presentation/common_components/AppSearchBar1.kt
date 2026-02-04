@@ -3,11 +3,13 @@ package com.example.kompasplustask.presentation.common_components
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
@@ -96,7 +98,7 @@ fun AppSearchBar1(
                     Icon(
                         imageVector = Icons.Default.Search,
                         contentDescription = "Поиск",
-                        tint = MaterialTheme.colorScheme.primary,
+                        tint = MaterialTheme.colorScheme.primary.copy(alpha = 0.6f),
                         modifier = Modifier
                             .size(28.dp)
                             .align(Alignment.CenterStart)
@@ -107,6 +109,7 @@ fun AppSearchBar1(
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
+                            .fillMaxHeight()
                             .padding(start = 16.dp),
                         contentAlignment = Alignment.CenterStart
                     ) {
@@ -114,7 +117,8 @@ fun AppSearchBar1(
                             Text(
                                 text = stringResource(R.string.search),
                                 color = MaterialTheme.colorScheme.primary.copy(alpha = 0.6f),
-                                fontSize = 16.sp
+                                fontSize = 16.sp,
+                                modifier = Modifier.wrapContentHeight(Alignment.CenterVertically)
                             )
                         }
                         innerTextField()
@@ -130,25 +134,23 @@ fun AppSearchBar1(
                             IconButton(
                                 onClick = onClearClick,
                                 modifier = Modifier.size(28.dp),
-                              //  contentPadding = PaddingValues(0.dp)
                             ) {
                                 Icon(
                                     imageVector = Icons.Default.Clear,
                                     contentDescription = "Очистить",
-                                    tint = MaterialTheme.colorScheme.primary,
-                                    modifier = Modifier.size(14.dp)
+                                    tint = MaterialTheme.colorScheme.primary.copy(alpha = 0.6f),
+                                    modifier = Modifier.size(28.dp)
                                 )
                             }
                         } else {
                             IconButton(
                                 onClick = onClearClick,
                                 modifier = Modifier.size(28.dp),
-                             //   contentPadding = PaddingValues(0.dp)
                             ) {
                                 Icon(
                                     painter = painterResource(R.drawable.icons_microphone_48),
                                     contentDescription = "Микрофон",
-                                    tint = MaterialTheme.colorScheme.primary,
+                                    tint = MaterialTheme.colorScheme.primary.copy(alpha = 0.6f),
                                     modifier = Modifier.size(28.dp)
                                 )
                             }
