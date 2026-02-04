@@ -57,6 +57,11 @@ dependencies {
     // Json
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0"
 
+    // Koin для Android
+    implementation("io.insert-koin:koin-android:3.5.0")
+    // Koin для Jetpack Compose
+    implementation("io.insert-koin:koin-androidx-compose:3.5.0")
+
     // tests
     testImplementation libs.junit
     androidTestImplementation libs.androidx.junit
