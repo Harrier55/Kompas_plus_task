@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -100,8 +101,8 @@ private fun FaqItemDetailView(
 ) {
     Column(
         modifier = modifier
-            .verticalScroll(rememberScrollState())
             .padding(16.dp)
+            .fillMaxSize()
     ) {
         // вопрос
         Text(
@@ -116,14 +117,19 @@ private fun FaqItemDetailView(
 
         // Ответ
         Card(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentHeight(),
             colors = CardDefaults.cardColors(
                 containerColor = MaterialTheme.colorScheme.onPrimary
             ),
             elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
         ) {
             Column(
-                modifier = Modifier.padding(16.dp)
+                modifier = Modifier
+                    .verticalScroll(rememberScrollState())
+                    .padding(16.dp)
+                    .fillMaxSize()
             ) {
                 Text(
                     text = faqItem.answer,
@@ -131,6 +137,8 @@ private fun FaqItemDetailView(
                     color = MaterialTheme.colorScheme.onSurface,
                     lineHeight = 24.sp
                 )
+
+                Spacer(modifier = Modifier.height(8.dp))
             }
         }
     }
