@@ -1,4 +1,4 @@
-package com.example.kompasplustask.domain
+package com.example.kompasplustask.domain.models
 
 import androidx.compose.runtime.Immutable
 

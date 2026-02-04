@@ -2,8 +2,8 @@ package com.example.kompasplustask.presentation.detail_screen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.kompasplustask.data.FaqRepository
-import com.example.kompasplustask.domain.FaqItem
+import com.example.kompasplustask.data.FaqRepositoryObject
+import com.example.kompasplustask.domain.models.FaqItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -51,7 +51,7 @@ class DetailViewModel: ViewModel() {
             try {
                 // Загрузка в фоновом потоке
                 val foundItem = withContext(dispatcher) {
-                    FaqRepository.getFaqData().find { it.code == faqCode }
+                    FaqRepositoryObject.getFaqData().find { it.code == faqCode }
                 }
 
                 _state.update {

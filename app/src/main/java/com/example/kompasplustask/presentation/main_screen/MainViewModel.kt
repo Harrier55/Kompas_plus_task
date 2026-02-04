@@ -3,9 +3,9 @@ package com.example.kompasplustask.presentation.main_screen
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.kompasplustask.data.FaqRepository
-import com.example.kompasplustask.domain.FaqCategory
-import com.example.kompasplustask.domain.FaqItem
+import com.example.kompasplustask.domain.models.FaqCategory
+import com.example.kompasplustask.domain.models.FaqItem
+import com.example.kompasplustask.domain.repository.FaqRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -20,7 +20,9 @@ data class MainScreenState(
     val expandedSections: Set<String> = emptySet()
 )
 
-class MainViewModel : ViewModel() {
+class MainViewModel(
+    private val repository: FaqRepository
+) : ViewModel() {
 
     private val _state = MutableStateFlow(MainScreenState())
     val state: StateFlow<MainScreenState> = _state
@@ -36,10 +38,10 @@ class MainViewModel : ViewModel() {
     fun loadFaqData() {
         viewModelScope.launch(dispatcher) {
             try {
-                allFaqItems = FaqRepository.getFaqData()
+                allFaqItems = repository.getFaqData()
                 Log.d(TAG, "list: ${allFaqItems.size}")
-            //    Log.d(TAG, "list: ${allFaqItems}")
-                val categories = FaqRepository.groupFaqByCategory(allFaqItems)
+                Log.d(TAG, "list: ${allFaqItems}")
+                val categories = groupFaqByCategory(allFaqItems)
 
                 _state.update { currentState ->
                     currentState.copy(
@@ -64,9 +66,9 @@ class MainViewModel : ViewModel() {
     fun onSearchQueryChanged(query: String) {
         _state.update { currentState ->
             val categories = if (query.isBlank()) {
-                FaqRepository.groupFaqByCategory(allFaqItems)
+                groupFaqByCategory(allFaqItems)
             } else {
-                FaqRepository.searchFaqItems(allFaqItems, query)
+                searchFaqItems(allFaqItems, query)
             }
 
             currentState.copy(
@@ -98,13 +100,48 @@ class MainViewModel : ViewModel() {
 
     fun clearSearch() {
         _state.update { currentState ->
-            val categories = FaqRepository.groupFaqByCategory(faqItems = allFaqItems)
+            val categories = groupFaqByCategory(faqItems = allFaqItems)
 
             // При очистке разворачиваем ВСЕ категории
             currentState.copy(
                 searchQuery = "",
                 categories = categories,
                 expandedSections = categories.map { it.title }.toSet()
+            )
+        }
+    }
+
+    private fun searchFaqItems(
+        faqItems: List<FaqItem>,
+        query: String
+    ): List<FaqCategory> {
+        if (query.isBlank()) {
+            return groupFaqByCategory(faqItems)
+        }
+
+        val trimmedQuery = query.trim()
+
+        val filteredItems = faqItems.filter { item ->
+            // Поиск по вопросу
+            val matchesQuestion = item.question.contains(trimmedQuery, ignoreCase = true)
+
+            // Поиск по ответу
+            val normalizedAnswer = item.answer.replace("\n", " ")
+            val matchesAnswer = normalizedAnswer.contains(trimmedQuery, ignoreCase = true)
+
+            matchesQuestion || matchesAnswer
+        }
+        return groupFaqByCategory(filteredItems)
+    }
+
+    private fun groupFaqByCategory(faqItems: List<FaqItem>): List<FaqCategory> {
+        // Группируем по категориям, элементы без категории попадут в "General"
+        val grouped = faqItems.groupBy { it.subject ?: "General" }
+
+        return grouped.map { (subject, items) ->
+            FaqCategory(
+                title = subject,
+                items = items
             )
         }
     }

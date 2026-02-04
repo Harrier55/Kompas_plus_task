@@ -37,7 +37,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.kompasplustask.R
-import com.example.kompasplustask.domain.FaqItem
+import com.example.kompasplustask.domain.models.FaqItem
 import com.example.kompasplustask.ui.theme.KompasPlusTaskTheme
 
 private const val TAG = "App"

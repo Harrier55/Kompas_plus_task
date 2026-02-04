@@ -1,8 +1,8 @@
 package com.example.kompasplustask.data
 
 import android.util.Log
-import com.example.kompasplustask.domain.FaqCategory
-import com.example.kompasplustask.domain.FaqItem
+import com.example.kompasplustask.domain.models.FaqCategory
+import com.example.kompasplustask.domain.models.FaqItem
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
@@ -13,10 +13,9 @@ data class FaqJsonItem(
     val Question: String,
     val Answer: String
 )
+    object FaqRepositoryObject {
 
-object FaqRepository {
-
-    private const val TAG = "App"
+     val TAG = "App"
 
     fun getFaqData(jsonString: String = DataSource.FAQ_JSON_STRING): List<FaqItem> {
         return try {

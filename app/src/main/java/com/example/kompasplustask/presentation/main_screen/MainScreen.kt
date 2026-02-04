@@ -19,17 +19,17 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.kompasplustask.domain.FaqCategory
-import com.example.kompasplustask.presentation.common_components.AppSearchBar
+import com.example.kompasplustask.domain.models.FaqCategory
 import com.example.kompasplustask.presentation.common_components.AppSearchBar1
 import com.example.kompasplustask.presentation.common_components.LoadingState
 import com.example.kompasplustask.ui.theme.KompasPlusTaskTheme
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun MainScreen(
     modifier: Modifier = Modifier,
     onNavigateToDetail: (String) -> Unit = {},
-    viewModel: MainViewModel = viewModel()
+    viewModel: MainViewModel = koinViewModel()
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     val focusManager = LocalFocusManager.current
