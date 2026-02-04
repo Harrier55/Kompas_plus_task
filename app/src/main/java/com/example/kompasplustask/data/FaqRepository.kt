@@ -57,11 +57,18 @@ object FaqRepository {
             return groupFaqByCategory(faqItems)
         }
 
-        val filteredItems = faqItems.filter { item ->
-            item.question.contains(query, ignoreCase = true) ||
-                    item.answer.contains(query, ignoreCase = true)
-        }
+        val trimmedQuery = query.trim()
 
+        val filteredItems = faqItems.filter { item ->
+            // Поиск по вопросу
+            val matchesQuestion = item.question.contains(trimmedQuery, ignoreCase = true)
+
+            // Поиск по ответу - нормализуем строку для лучшего поиска
+            val normalizedAnswer = item.answer.replace("\n", " ") // Заменяем переносы на пробелы
+            val matchesAnswer = normalizedAnswer.contains(trimmedQuery, ignoreCase = true)
+
+            matchesQuestion || matchesAnswer
+        }
         return groupFaqByCategory(filteredItems)
     }
 

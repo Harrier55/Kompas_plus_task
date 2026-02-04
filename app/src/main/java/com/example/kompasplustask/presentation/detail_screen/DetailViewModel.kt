@@ -85,12 +85,4 @@ class DetailViewModel: ViewModel() {
     fun retry(faqCode: String) {
         loadFaqItem(faqCode)
     }
-
-
-
-
-   fun getFaqItemById(faqCode: String): FaqItem?{
-       val allFaqItems = FaqRepository.getFaqData()
-       return allFaqItems.find { it.code == faqCode }
-   }
 }
