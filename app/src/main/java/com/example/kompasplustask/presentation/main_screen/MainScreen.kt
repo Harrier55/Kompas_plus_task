@@ -21,6 +21,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.kompasplustask.domain.FaqCategory
 import com.example.kompasplustask.presentation.common_components.AppSearchBar
+import com.example.kompasplustask.presentation.common_components.AppSearchBar1
 import com.example.kompasplustask.presentation.common_components.LoadingState
 import com.example.kompasplustask.ui.theme.KompasPlusTaskTheme
 
@@ -39,7 +40,7 @@ fun MainScreen(
     ) {
 
         // Поисковая строка
-        AppSearchBar(
+        AppSearchBar1(
             query = state.searchQuery,
             onQueryChange = { query ->
                 viewModel.onSearchQueryChanged(query)
