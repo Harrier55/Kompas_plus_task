@@ -3,13 +3,21 @@ package com.example.kompasplustask.data
 import android.content.Context
 import android.util.Log
 import com.example.kompasplustask.R
-import com.example.kompasplustask.data.FaqRepositoryObject.TAG
 import com.example.kompasplustask.domain.models.FaqItem
 import com.example.kompasplustask.domain.repository.FaqRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
+
+@Serializable
+data class FaqJsonItem(
+    val Code: String,
+    val Subject: String?,
+    val Question: String,
+    val Answer: String
+)
 
 
 class FaqRepositoryImpl(
@@ -32,7 +40,7 @@ class FaqRepositoryImpl(
                 )
             }
         } catch (e: Exception) {
-            Log.e(TAG, "FaqRepository getFaqData ", e)
+            Log.e("App", "FaqRepository getFaqData ", e)
             emptyList()
         }
     }
