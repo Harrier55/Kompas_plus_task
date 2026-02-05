@@ -1,5 +1,6 @@
 package com.example.kompasplustask.presentation.main_screen
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -32,7 +33,7 @@ fun FaqQuestionItem(
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .combinedClickable(
+            .clickable(
                 interactionSource = remember { MutableInteractionSource() },
                 indication = null,
                 onClick = onClick
