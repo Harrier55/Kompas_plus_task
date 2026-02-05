@@ -7,7 +7,6 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -74,7 +73,6 @@ fun FaqCategorySection(
             )
 
             Icon(
-             //   imageVector = if (isExpanded) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
                 painterResource(R.drawable.icons_double_up_32),
                 contentDescription = if (isExpanded) "Свернуть" else "Развернуть",
                 tint = MaterialTheme.colorScheme.primary,
